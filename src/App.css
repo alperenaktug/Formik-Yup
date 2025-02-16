@@ -2,8 +2,8 @@ body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: lightgray;
-  color: black;
+  background-color: rgb(22,22,22);
+  color: white;
 }
 
 .app{
@@ -18,4 +18,31 @@ body{
 
 form{
   width: 500px;
+}
+
+
+input{
+  width: 100%;
+  padding: 5px;
+  border : none;
+  border-radius: 5px;
+  background-color: rgb(22,22,22) ;
+  border-bottom: 1px solid lightgrey ;
+  outline: none;
+  color: #fff;
+
+
+}
+
+.inputDiv{
+  margin: 30px 0px;
+}
+
+.saveButton{
+  width: 100%;
+  padding: 7px;
+  background-color: gold;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
 }

@@ -13,17 +13,17 @@ function RegisterForm() {
   return (
     <div>
       <form className="form">
-        <div>
+        <div className="inputDiv">
           <label>Email</label>
           <input
             type="text"
-            id="Email"
+            id="email"
             placeholder="Email giriniz.."
             value={values.email}
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="inputDiv">
           <label>Yaş</label>
           <input
             type="number"
@@ -34,7 +34,7 @@ function RegisterForm() {
           />
         </div>
 
-        <div>
+        <div className="inputDiv">
           <label>şifre</label>
           <input
             type="password"
@@ -44,7 +44,7 @@ function RegisterForm() {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="inputDiv">
           <label>Şifre Tekrarı</label>
           <input
             type="password"
@@ -55,15 +55,27 @@ function RegisterForm() {
           />
         </div>
 
-        <div>
-          <input
-            type="checkbox"
-            id="term"
-            value={values.term}
-            onChange={handleChange}
-          />
-          <label>Kullanıcı sözleşmesini kabul ediyorum</label>
+        <div className="inputDiv">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "flex-start",
+              justifyContent: "flex-start",
+            }}
+          >
+            <input
+              style={{ width: "20px", height: "12px" }}
+              type="checkbox"
+              id="term"
+              value={values.term}
+              onChange={handleChange}
+            />
+            <label>Kullanıcı sözleşmesini kabul ediyorum</label>
+          </div>
         </div>
+
+        <button className="saveButton">Kaydet</button>
       </form>
     </div>
   );
