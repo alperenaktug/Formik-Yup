@@ -1,6 +1,17 @@
 import { useFormik } from "formik";
+import { registerFormSchemas } from "../schemas/RegisterFormSchemas";
 
 function RegisterForm() {
+  const submit = (values, action) => {
+    setTimeout(() => {
+      action.resetForm();
+    }, 2000);
+  };
+
+  const free = () => {
+    alert("bilgileriniz başarıyla kaydedildi");
+  };
+
   const { values, errors, handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: "",
@@ -9,10 +20,12 @@ function RegisterForm() {
       confirmPassword: "",
       term: "",
     },
+    validationSchema: registerFormSchemas,
+    onSubmit: submit,
   });
   return (
     <div>
-      <form className="form">
+      <form onSubmit={handleSubmit} className="form">
         <div className="inputDiv">
           <label>Email</label>
           <input
@@ -22,6 +35,7 @@ function RegisterForm() {
             value={values.email}
             onChange={handleChange}
           />
+          {errors.email && <p className="input-error">{errors.email}</p>}
         </div>
         <div className="inputDiv">
           <label>Yaş</label>
@@ -32,6 +46,7 @@ function RegisterForm() {
             value={values.age}
             onChange={handleChange}
           />
+          {errors.age && <p className="input-error">{errors.age}</p>}
         </div>
 
         <div className="inputDiv">
@@ -43,6 +58,7 @@ function RegisterForm() {
             value={values.password}
             onChange={handleChange}
           />
+          {errors.password && <p className="input-error">{errors.password}</p>}
         </div>
         <div className="inputDiv">
           <label>Şifre Tekrarı</label>
@@ -53,6 +69,9 @@ function RegisterForm() {
             value={values.confirmPassword}
             onChange={handleChange}
           />
+          {errors.confirmPassword && (
+            <p className="input-error">{errors.confirmPassword}</p>
+          )}
         </div>
 
         <div className="inputDiv">
@@ -73,9 +92,12 @@ function RegisterForm() {
             />
             <label>Kullanıcı sözleşmesini kabul ediyorum</label>
           </div>
+          {errors.term && <p className="input-error">{errors.term}</p>}
         </div>
 
-        <button className="saveButton">Kaydet</button>
+        <button type="submit" className="saveButton" onClick={free}>
+          Kaydet
+        </button>
       </form>
     </div>
   );
